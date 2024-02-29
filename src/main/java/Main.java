@@ -6,8 +6,9 @@ import java.util.Scanner;
 
 
 public class Main {
-
+//creamos una cadena de caracteres aleatoria
     private static final String randomChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+    //tamaño de la cadena
     private static final int tamanyo = 20;
 
     public static void main(String[] args) {
@@ -18,18 +19,23 @@ public class Main {
         ObservableList<String> urls = FXCollections.observableArrayList();
         urls.addListener(downloader);
 
+        //bucle infinito para introducir urls
         while (true) {
             System.out.println("Introduce una URL:");
             url = reader.nextLine();
+
+            //condicion de fin d bucle
             if (url.isEmpty()) {
                 System.out.println("Se va a proceder a descargar y comprimir los ficheros");
                 break;
             }
+            //llamos al metodo para generar la clave aleatoria
             String randomString = generarCadenaRandom();
             urls.add(url + " " + randomString);
         }
     }
 
+    //metodo para generar la cadena aleatoria
     private static String generarCadenaRandom() {
         Random random = new Random();
         StringBuilder builder = new StringBuilder(tamanyo);
